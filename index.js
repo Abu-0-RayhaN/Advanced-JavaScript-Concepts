@@ -12,10 +12,10 @@ const filteredItems = items.filter((item) => {
 });
 // console.log(filteredItems)
 
-const itemNames = items.map((e) => {
-  return e.name;
+const itemNames = items.map((e, a) => {
+  return e.price + a;
 });
-// console.log(itemNames)
+// console.log(itemNames);
 
 const foundItem = items.find((item) => {
   return item.name === "Album";
@@ -38,10 +38,14 @@ const hasExpensive = items.some((item) => {
 const total = items.reduce((currentTotal, item) => {
   return item.price + currentTotal;
 }, 0);
-// console.log(total)
-const number = [1, 2, 3, 4, 5];
+// console.log(total);
+const number = [1, 2, 6, 4, 5];
+const reduce = number.reduce((a, a1) => {
+  return a + a1;
+}); //firstly it take a=1,a=2 and adds it then takes a=3 and a1=3 adds it and goes on
+// console.log(reduce);
 const includesTwo = number.includes(55);
-// console.log(includesTwo)
+// console.log(includesTwo);
 // console.log(items.reverse());
 // console.log(['a','f','d','b','e'].sort())
 // console.log(items.slice(0,3))
@@ -61,7 +65,18 @@ try {
   unicycle;
   console.log("End of try runs --never reached");
 } catch (e) {
-  console.log("Error has occured: " + e);
+  console.log("Error has occured: " + e.message);
 } finally {
   console.log("This is always run");
+}
+let json = '{ "age" : 30}';
+
+try {
+  let user = JSON.parse(json);
+  if (!user.name) {
+    throw new SyntaxError("Incomplete data: no name");
+  }
+  console.log(user.name);
+} catch (e) {
+  console.log("JSON Error: " + e);
 }
